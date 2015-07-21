@@ -65,4 +65,4 @@ React.render(React.createElement(HelloWorld, null), document.body);
 
 React.render就是讲react对象渲染到指定的dom元素中，React.createElement是创建一个组件实例。具体的参数意义我们
 会在后面讲到。是不是感觉很easy，其实react提供了很简单的api，就是为了保证开发者们不被淹没在密密麻麻的api海洋中，
-OK，我们的Hello World已经成功了！下一次我们会研究react中几个基本的内置函数一级它们的作用。
+OK，我们的Hello World已经成功了！下一次我们会研究react中几个基本的内置函数以及它们的作用。
