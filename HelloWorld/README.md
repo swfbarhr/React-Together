@@ -55,7 +55,9 @@ var HelloWorld = React.createClass({
 React.render(<HelloWorld/>, document.body);
 ```
 或者
+```js
 React.render(React.createElement(HelloWorld, null), document.body);
+```
 
 ## STEP4
 将文件放置到Apache或IIS中访问（直接浏览器打开可能会报错--“跨域访问”），就可以看到效果！
