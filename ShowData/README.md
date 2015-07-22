@@ -48,7 +48,7 @@ render: function() {
 ```js
 React.render(<ShowTime time = {new Date()} />, document.body);
 ```
-我们可以看到，在实例话的时候，我把当前时间传了进去，也就是说，一会页面上显示的就是我现在传入的时间。
+我们可以看到，在实例化的时候，我把当前时间传了进去，也就是说，一会页面上显示的就是我现在传入的时间。
 
 
 ## STEP4
