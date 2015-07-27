@@ -59,6 +59,14 @@ var ControlledComponent = React.createClass({
 因为我们只设置了组件的value值，但是又没有告诉react当值改变的时候该怎么更新状态，所以我们渲染出来的input控件的值在界面上是无法改变的。 
 
 
+## 计划
+
+接下来我会将一一介绍各个表单控件应该怎么来玩耍。
+* [Label](https://github.com/swfbarhr/React-Together/tree/master/Form/Label)
+* [TextArea&Select](https://github.com/swfbarhr/React-Together/tree/master/Form/TextAreaSelect)
+* [Checkbox&Radiobox](https://github.com/swfbarhr/React-Together/tree/master/Form/CheckboxRadiobox)
+
+
 #  总结
 
 到这里，大家应该可以初步理解约束组件和无约束组件的含义了吧。所谓的约束，就是受react约束。通过约束我们可以做很多事情（例如验证）。我们说，如果要实现一个无约束的组件，需要设置defaultValue，但是如果我们即设置了defaultValue又设置的跟react状态有关的value会出现什么情况呢，大家可以自己试试。
