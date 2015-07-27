@@ -42,7 +42,7 @@ var ControlledComponent = React.createClass({
     }
 });
 ```
-约束组件的试用场景有很多，比如我们要自动的将输入的字母转换成大写，我们可以在onChange时间中转换完成然后做setState操作，即使这样我们也不会感受到刷屏。   
+约束组件的使用场景有很多，比如我们要自动的将输入的字母转换成大写，我们可以在onChange时间中转换完成然后做setState操作，即使这样我们也不会感受到刷屏。   
 需要注意的是，如果我们不设置onChange事件，大家猜猜会出现什么样的效果。代码如下：
 ```js
 var ControlledComponent = React.createClass({
