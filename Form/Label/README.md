@@ -10,7 +10,7 @@ label标签是一个非常重要但是简单的html元素，我们要讲解的�
 
 ## htmlFor
 
-为了解决for关键字的文字，我们在JSX里面可以使用htmlFor这个属性，等页面渲染之后会把htmlFor换成for。代码如下：
+为了解决for关键字的问题，我们在JSX里面可以使用htmlFor这个属性，等页面渲染之后会把htmlFor换成for。代码如下：
 ```js
 var FormLabel = React.createClass({
     render: function() {
