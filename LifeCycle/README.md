@@ -1,4 +1,4 @@
-## 生命周期（一）
+# 生命周期（一）
 
 react的生命周期大致可以分为三个阶段：实例化、存在期、销毁清理期。
 
@@ -43,4 +43,73 @@ React.render(<Instance />, document.body);
 
 ## 总结
 
-此将中，我们进一步了解了getDefaultProps和getInitialState方法，通知也引入了两个新的方法：componentWillMount和componentDidMount。搞定生命周期，可以让我们更清晰的coding和定位问题，什么阶段应该干什么，什么阶段不能干什么都应该按照生命周期来走。
+此讲中，我们进一步了解了getDefaultProps和getInitialState方法，通知也引入了两个新的方法：componentWillMount和componentDidMount。搞定生命周期，可以让我们更清晰的coding和定位问题，什么阶段应该干什么，什么阶段不能干什么都应该按照生命周期来走。
+
+
+# 生命周期（二）
+
+在生命周期（一）中，我们介绍到在实例化阶段会有五个函数依次执行。在这一节中，依然会有五个函数被依次执行分别是：componentWillReceiveProps、shouldComponentUpdate、componentWillUpdate、render、componentDidUpdate。后面三个函数我们已经在上一节中介绍过了，这一节中我们重点介绍前两个函数。
+
+
+## componentWillReceiveProps
+
+在任何时候，我们都可以通过父组件来更改子组件的props（通过setProps方法），这时就会促发子组件的componentWillReceiveProps方法，并且导致父组件整体重绘（不止setSate会重绘组件哦）。下面我们引入一段代码来形象的展示一下componentWillReceiveProps方法。
+```js
+//子组件
+var LifeCycleSub = React.createClass({
+    getDefaultProps: function() {
+        return {
+            content:'默认子组件内容'
+        };
+    },
+    componentWillReceiveProps: function(_props) {
+        console.log(_props.content);
+    },
+    render: function() {
+        return <h2>{this.props.content}</h2>;
+    }
+});
+
+//父组件
+var LifeCycle = React.createClass({
+    getDefaultProps: function() {
+        return {
+            subContent:'默认子组件内容'
+        };
+    },
+    render: function() {
+        return  (<div>
+                    <h1>Reactjs生命周期</h1>
+                    <LifeCycleSub content={this.props.subContent} />
+                 </div>);
+    }
+});
+
+var instanceLC = React.render(<LifeCycle />, document.body);
+
+setTimeout(function(){
+    instanceLC.setProps({subContent:'父组已经更改了子组件的props'});
+}, 1000);
+```
+上述代码中，我们有两个组件：LifeCycleSub组件（子组件）和LifeCycle组件（父组件）。实现的步骤如下：
+* 1.在父组件中我们中使用了子组件（LifeCycleSub）
+* 2.React.render
+* 3.我们把React.render返回的实例对象赋值给了instanceLC
+* 4.然后我们调用了instanceLC的setProps方法，重置了子组件的props。这样我们就实现了在父组件中更新子组件的props，从而子组件的componentWillReceiveProps方法被调用。此时，在控制台我们会打印出我们设置的"subContent"的内容。   
+一般情况下，我们不需要调用setProps，而是props也是看做只读的属性（如有需要，我们可以使用state）。
+
+
+## shouldComponentUpdate
+
+我们说react是非常快的，但是通过我们合理的代码可以让其更快。这里我们就要讲到shouldComponentUpdate方法，如果我们可以确定某个组件是不需要渲染，那么我们可以实现其shouldComponentUpdate方法，代码如下：
+```js
+shouldComponentUpdate: function() {
+        return false;
+}
+```
+shouldComponentUpdate方法中我们返回了一个false，这就告诉了react这个组件不需要渲染，之后react在渲染的时候就会跳过此组件，这是该组件的render方法就不会执行，同时位于render方法前后的钩子函数componentWillUpdate和componentDidUpdate也不会执行。详细代码可以见例子"生命周期（二）--存在期"。
+
+
+## 总结
+
+在此讲中我们介绍了两个新的函数componentWillReceiveProps和shouldComponentUpdate，当在父组件中改变子组件的props（setProps）就会触发componentWillReceiveProps函数，sholdComponentUpdate函数可以使我们的react更快，但是要确认使用sholdComponentUpdate函数的组件确实不需要渲染。
