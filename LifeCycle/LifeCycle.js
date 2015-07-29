@@ -1,5 +1,4 @@
 //生命周期（一）--实例化阶段
-/*
 var LifeCycle = React.createClass({
     getDefaultProps: function() {
     	console.log(1);
@@ -22,7 +21,6 @@ var LifeCycle = React.createClass({
 });
 
 React.render(<LifeCycle />, document.body);
-*/
 
 
 //生命周期（二）--存在期
@@ -101,6 +99,7 @@ React.render(<LifeCycle />, document.body);
 
 
 //生命周期（三）--销毁期&清理期
+/*
 var LifeCycleSub = React.createClass({
     getDefaultProps: function() {
         return {
@@ -136,3 +135,4 @@ var LifeCycle = React.createClass({
 });
 
 React.render(<LifeCycle />, document.body);
+*/
