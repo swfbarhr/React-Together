@@ -155,7 +155,7 @@ var LifeCycle = React.createClass({
 
 React.render(<LifeCycle />, document.body);
 ```
-上述代码中，我们在点击按钮之后子组件被移除，在移除之前出发了子组件的componentWillUnmount方法，在控制台打印出“子组件将移除”，之后界面上的效果就是子组件消失了。
+上述代码中，我们在点击按钮之后子组件被移除，在移除之前触发了子组件的componentWillUnmount方法，在控制台打印出“子组件将移除”，之后界面上的效果就是子组件消失了。
 
 
 ## 总结
