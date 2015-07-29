@@ -27,7 +27,7 @@ render: function() {
    			</select>);
 }
 ```
-我们可以看到，传入的test时一个数组，界面上显示的效果就是前两项被选中。但是需要注意的时，在选择select的时候，value值不会发生变化，而是每个option的selected属性会发生变化，所以我们在selectChange事件中做了特殊处理（循环每一个option，技术所有selected属性，然后在更新状态，具体代码可以看示例）。
+我们可以看到，传入的test时一个数组，界面上显示的效果就是前两项被选中。但是需要注意的时，在选择select的时候，value值不会发生变化，而是每个option的selected属性会发生变化，所以我们在selectChange事件中做了特殊处理（循环每一个option，技术所有selected属性，然后再更新状态，具体代码可以看[示例](https://github.com/swfbarhr/React-Together/blob/master/Form/TextAreaSelect/TextAreaSelect.js)）。
 
 
 ## 注意
