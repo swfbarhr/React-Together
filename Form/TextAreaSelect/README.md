@@ -6,7 +6,7 @@ render: function() {
    	return (<textarea value={this.state.test} onChange={this.textChange} />);
 }
 ```
-我们在示例中同时列出了“约束”和“非约束”的写法，具体可以查看demo。
+我们在示例中同时列出了“约束”和“非约束”的写法，具体可以查看[demo](https://github.com/swfbarhr/React-Together/blob/master/Form/TextAreaSelect/TextAreaSelect.js)。
 
 
 ## select
