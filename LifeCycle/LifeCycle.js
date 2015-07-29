@@ -85,7 +85,7 @@ var LifeCycle = React.createClass({
         };
     },
     btnClick: function(){
-        this.setState({updated:'父组件已更新',subUpdated:'子组件已更新'})
+        this.setState({updated:'父组件已更新', subUpdated:'子组件已更新'})
     },
     render: function() {
         return  (<div>
@@ -98,3 +98,41 @@ var LifeCycle = React.createClass({
 
 React.render(<LifeCycle />, document.body);
 */
+
+
+//生命周期（三）--销毁期&清理期
+var LifeCycleSub = React.createClass({
+    getDefaultProps: function() {
+        return {
+            content:'我是子组件'
+        };
+    },
+    componentWillUnmount: function() {
+        console.log('子组件将移除');
+    },
+    render: function() {
+        return <h2>{this.props.content}</h2>;
+    }
+});
+
+var LifeCycle = React.createClass({
+    getInitialState: function() {
+        return {
+            updated: false
+        };
+    },
+    btnClick: function(){
+        this.setState({updated:true})
+    },
+    render: function() {
+        var instanceSub = !this.state.updated ? <LifeCycleSub /> : null;
+
+        return  (<div>
+                    <h1>Reactjs生命周期</h1>
+                    {instanceSub}
+                    <input type="button" value="点我移出" onClick={this.btnClick} />
+                 </div>);
+    }
+});
+
+React.render(<LifeCycle />, document.body);

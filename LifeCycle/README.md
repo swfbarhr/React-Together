@@ -113,3 +113,51 @@ shouldComponentUpdate方法中我们返回了一个false，这就告诉了react�
 ## 总结
 
 在此讲中我们介绍了两个新的函数componentWillReceiveProps和shouldComponentUpdate，当在父组件中改变子组件的props（setProps）就会触发componentWillReceiveProps函数，sholdComponentUpdate函数可以使我们的react更快，但是要确认使用sholdComponentUpdate函数的组件确实不需要渲染。
+
+
+# 生命周期（三）
+
+在生命的最后阶段，我们常做的就是料理后事，擦擦屁股什么的。在react中也是如此，在这个阶段只有一个函数componentWillUnmount被执行，此函数只有在组件被移除时才会出发。到底什么才算移除，react在渲染的时候会有一个diff算法，会计算此次渲染与上次的不同之处，如果发现此次少了一个组件，渲染的时候就直接把少了的组件移除，这样就起到了移除组件的效果。代码如下：
+```js
+var LifeCycleSub = React.createClass({
+    getDefaultProps: function() {
+        return {
+            content:'我是子组件'
+        };
+    },
+    componentWillUnmount: function() {
+        console.log('子组件将移除');
+    },
+    render: function() {
+        return <h2>{this.props.content}</h2>;
+    }
+});
+
+var LifeCycle = React.createClass({
+    getInitialState: function() {
+        return {
+            updated: false
+        };
+    },
+    btnClick: function(){
+        this.setState({updated:true})
+    },
+    render: function() {
+        var instanceSub = !this.state.updated ? <LifeCycleSub /> : null;
+
+        return  (<div>
+                    <h1>Reactjs生命周期</h1>
+                    {instanceSub}
+                    <input type="button" value="点我移出" onClick={this.btnClick} />
+                 </div>);
+    }
+});
+
+React.render(<LifeCycle />, document.body);
+```
+上述代码中，我们在点击按钮之后子组件被移除，在移除之前出发了子组件的componentWillUnmount方法，在控制台打印出“子组件将移除”，之后界面上的效果就是子组件消失了。
+
+
+## 总结
+
+在清理期，我们通常做的就是移除计时器等一系列操作，保证在组件移除之后不会有后遗症。至此，react生命周期我们就走完了，具体每一个函数应该在什么情况下时候使用，那就得看业务需求了。要融会贯通，还是要多联系。我是一个不择不扣的实践主义者！
