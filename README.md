@@ -17,5 +17,12 @@
 
 我们使用react最终的目的就是：一个页面的实现，仅仅是由一个或多个松耦合的react组件组成。
 
+## 阅读顺序
+* [Hello World](https://github.com/swfbarhr/React-Together/tree/master/HelloWorld)
+* [展示数据](https://github.com/swfbarhr/React-Together/tree/master/ShowData)
+* [用户交互](https://github.com/swfbarhr/React-Together/tree/master/Interaction)
+* [生命周期](https://github.com/swfbarhr/React-Together/tree/master/LifeCycle)
+* [表单](https://github.com/swfbarhr/React-Together/tree/master/Form)
+
 ## 传送门
 点一下[传送门](https://github.com/swfbarhr/React-Together/tree/master/HelloWorld)，可以嗖的一下把你传送到Hello World!
