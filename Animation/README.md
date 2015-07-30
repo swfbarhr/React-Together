@@ -4,7 +4,7 @@
 
 
 ## react插件库（Add-ons）
-这个插件库中包含了很多FB封装的基于react的使用库，也包括我们接下来会用到的动画部分CSSTransitionGroup。但是现阶段（写此文档时），FB还是把这个插件库看做是实验性质的，但是最终还是会合并到核心类库中去。我们可以使用如下的方法引用：
+这个插件库中包含了很多FB封装的基于react的实用库，也包括我们接下来会用到的动画部分CSSTransitionGroup。但是现阶段（写此文档时），FB还是把这个插件库看做是实验性质的，但是最终还是会合并到核心类库中去。我们可以使用如下的方法引用：
 ```js
 <script src="../react/react-with-addons.min.js"></script>
 ```
@@ -26,6 +26,12 @@ CSSTransitionGroup是react对于CSS3动画的顶层api，我们可以直接使�
 
 第二步我们在render函数中把动画的对象用CSSTransitionGroup包裹起来，并且给其tansitionName属性一个值
 ```js
+addDiv: function() {
+	this.setState({target:<div className='test' key='k1'></div>})
+},
+removeDiv: function() {
+	this.setState({target:null});
+},
 render: function() {
  	return (<div>
    				<input type='button' onClick={this.addDiv} value='点我添加' />
@@ -36,15 +42,14 @@ render: function() {
    			</div>);
 }
 ```
-同事我们要给出4个时间点的CSS，CSS的名称是与刚刚的transitionName有关联的。
+同时我们要给出四个时间点的CSS，CSS的名称是与刚刚的transitionName有关联的。
 ```css
 .test-enter {width:50px;}
 .test-enter-active {width:150px;transition: width 2s;-moz-transition: width 2s;-webkit-transition: width 2s;-o-transition: width 2s;}
 .test-leave {width:150px;}
 .test-leave-active {height:0;transition: height 2s;}
 ```
-如果我们transitionName为test，那么我们需要添加四个CSS分别是test-enter、test-enter-active、test-leave、test-leave-active。react会在适当的时候给我们的组件
-应用这四个样式。例如：在页面渲染的时候会给组件先添加test-enter样式，之后是test-enter-active，这样我们就可以清楚的知道test-enter是最初的样式而test-enter-active
+如果我们transitionName为test，那么我们需要添加四个CSS分别是test-enter、test-enter-active、test-leave、test-leave-active。react会在适当的时候给我们的组件应用这四个样式。例如：在页面渲染的时候会给组件即刻添加test-enter样式，之后是test-enter-active，这样我们就可以清楚的知道test-enter是最初的样式而test-enter-active
 其实是执行的动画。
 
 ### CSS3原生动画 SETP3
