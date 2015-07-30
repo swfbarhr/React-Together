@@ -23,6 +23,7 @@
 * [用户交互](https://github.com/swfbarhr/React-Together/tree/master/Interaction)
 * [生命周期](https://github.com/swfbarhr/React-Together/tree/master/LifeCycle)
 * [表单](https://github.com/swfbarhr/React-Together/tree/master/Form)
+* [动画](https://github.com/swfbarhr/React-Together/tree/master/Animation)
 
 ## 传送门
 点一下[传送门](https://github.com/swfbarhr/React-Together/tree/master/HelloWorld)，可以嗖的一下把你传送到Hello World!
