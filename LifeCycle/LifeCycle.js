@@ -83,7 +83,10 @@ var LifeCycle = React.createClass({
         };
     },
     btnClick: function(){
-        this.setState({updated:'父组件已更新', subUpdated:'子组件已更新'})
+        this.setState({
+            updated:'父组件已更新', 
+            subUpdated:'子组件已更新'
+        })
     },
     render: function() {
         return  (<div>
